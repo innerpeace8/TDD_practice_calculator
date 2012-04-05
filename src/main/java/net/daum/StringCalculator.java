@@ -6,9 +6,10 @@ import java.util.regex.Pattern;
 public class StringCalculator {
 
 	public int add(String text) throws Exception {
-		if (text.isEmpty()) {
+		if (isEmptyString(text)) {
 			return 0;
 		}
+		
 		String delimeter = ",|\n";
 		if (text.startsWith("//")) {
 			Matcher m = Pattern.compile("//(.)\n(.*)").matcher(text);
@@ -35,6 +36,10 @@ public class StringCalculator {
 			throw new Exception("Cannot add negative number!");
 		}
 		return result;
+	}
+	
+	private boolean isEmptyString(String text) {
+		return text.isEmpty();
 	}
 
 }
